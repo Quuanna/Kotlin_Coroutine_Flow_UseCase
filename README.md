@@ -14,9 +14,10 @@
 
 ## Construct the REST APIs And network data
     - [Retrofit](https://github.com/square/retrofit): Retrofit supports coroutines suspend function after 2.6.0
-    - [Okhttp3](https://square.github.io/okhttp/) 
+    - [Okhttp3](https://github.com/square/okhttp) 
       - interceptor: Implementation to judge various status display messages of Http Status Code, ex: 2xx Success, 3xx Redirection, 4xx Client Errors, 5xx Server Errors
       - mockserver: MockWebServer provides fake json, Mock fake Http Response, or request, response, header-related verification
+
 ## Unit Test
   - Retrofit mock: tests more readable & controllable, use Retrofit's mock web server just like how it is used，[mentioned by @JakeWharton](https://github.com/square/retrofit/issues/1413#issuecomment-168905741) 
   - [coroutines test](https://developer.android.com/kotlin/coroutines/test#additional-resources): 
