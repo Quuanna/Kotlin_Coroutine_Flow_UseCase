@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UseCase_Coroutine_And_Test</string>
+    <string name="coroutine_use_case">Coroutine Use Case</string>
+    <string name="flow_use_case">Flow Use Case</string>
 </resources>
