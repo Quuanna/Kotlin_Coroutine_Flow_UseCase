@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.google.devtools.ksp) // https://developer.android.com/build/migrate-to-ksp
 }
 
 android {
@@ -51,12 +52,14 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.android)
-    implementation(libs.androidx.work.runtime.ktx)
-    implementation(libs.androidx.work.runtime)
+
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.work.runtime)
 
     implementation(platform(libs.squareup.okhttp.bom))
     implementation(libs.squareup.okhttp)
@@ -67,11 +70,12 @@ dependencies {
     implementation(libs.squareup.retrofit.gson)
     implementation(libs.squareup.retrofit.mock)
 
-    implementation(libs.kotlinx.coroutine.core)
     implementation(libs.kotlinx.coroutine)
+    implementation(libs.kotlinx.coroutine.core)
     implementation(libs.kotlinx.coroutine.test)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
