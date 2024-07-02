@@ -64,7 +64,7 @@ dependencies {
     implementation(platform(libs.squareup.okhttp.bom))
     implementation(libs.squareup.okhttp)
     implementation(libs.squareup.okhttp.interceptor)
-    implementation(libs.squareup.okhttp.mockwebserver)
+//    implementation(libs.squareup.okhttp.mockwebserver)
 
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.retrofit.gson)

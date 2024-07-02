@@ -50,7 +50,7 @@ squareup-retrofit-mock = {group= "com.squareup.retrofit2", name = "retrofit-mock
 squareup-okhttp-bom = {group= "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "squareupOkhttp"}
 squareup-okhttp = {group= "com.squareup.okhttp3", name = "okhttp"}
 squareup-okhttp-interceptor = {group= "com.squareup.okhttp3", name = "logging-interceptor"}
-squareup-okhttp-mockwebserver = {group= "com.squareup.okhttp3", name = "mockwebserver"}
+#squareup-okhttp-mockwebserver = {group= "com.squareup.okhttp3", name = "mockwebserver"}
 
 kotlinx-coroutine-core = {group= "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxcoroutines"}
 kotlinx-coroutine = {group= "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxcoroutines"}
