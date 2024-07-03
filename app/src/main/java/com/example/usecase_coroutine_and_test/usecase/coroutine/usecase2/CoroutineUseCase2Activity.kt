@@ -1,21 +1,37 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase2
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.usecase_coroutine_and_test.R
+import androidx.core.view.isVisible
+import coil.load
+import com.example.usecase_coroutine_and_test.constant.UiState
+import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 
 class CoroutineUseCase2Activity : AppCompatActivity() {
+    private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
+    private val case1ViewModel: CoroutineUseCase2ViewModel by viewModels { CoroutineUseCase2ViewModel.Factory }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_coroutine_use_case2)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContentView(binding.root)
+
+        setupObserve()
+        case1ViewModel.getPokemonImage(1)
+    }
+
+    private fun setupObserve() {
+
+        case1ViewModel.pokemonInfo().observe(this@CoroutineUseCase2Activity) { info ->
+            binding.tvName.text = info.name
+            binding.imageView.load(info.imageUrl)
+        }
+
+        case1ViewModel.uiState().observe(this@CoroutineUseCase2Activity) { uiState ->
+            when (uiState) {
+                is UiState.Loading -> binding.progressBar.isVisible = true
+                is UiState.Success, is UiState.Error -> binding.progressBar.isVisible = false
+            }
         }
     }
 }
