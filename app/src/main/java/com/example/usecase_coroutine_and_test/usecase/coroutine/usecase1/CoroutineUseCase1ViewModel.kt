@@ -27,15 +27,20 @@ class CoroutineUseCase1ViewModel(private val repository: PokemonRepository) :
     fun getPokemonName(page: Int) {
         viewModelScope.launch {
             uiState.value = UiState.Loading
-            val list = repository.fetchPokemonList(page)
-            try {
-                uiState.value = UiState.Success
-                pokemonInfo.value = PokemonInfo(
-                    name = list.getOrThrow().results.first().name,
-                    imageUrl = ""
-                )
-            } catch (e: Exception) {
-                uiState.value = UiState.Error()
+            repository.fetchPokemonList(page).run {
+                if (isSuccess) {
+                    uiState.value = UiState.Success
+                    try {
+                        pokemonInfo.value = PokemonInfo(
+                            name = getOrThrow().results.first().name,
+                            imageUrl = ""
+                        )
+                    } catch (e: Exception) {
+                        uiState.value = UiState.Error(e.message.toString())
+                    }
+                } else {
+                    uiState.value = UiState.Error()
+                }
             }
         }
     }
