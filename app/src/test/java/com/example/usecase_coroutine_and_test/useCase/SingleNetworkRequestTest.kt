@@ -31,7 +31,7 @@ class SingleNetworkRequestTest {
         observeViewModel(viewModel)
         assertTrue(receivedUiStates.isEmpty())
 
-        viewModel.getPokemonList(1)
+        viewModel.getPokemonName(1)
         assertEquals(listOf(UiState.Loading, UiState.Success), receivedUiStates)
     }
 
@@ -52,7 +52,7 @@ class SingleNetworkRequestTest {
 
         assertTrue(receivedUiStates.isEmpty())
 
-        viewModel.getPokemonList(1)
+        viewModel.getPokemonName(1)
 
         assertEquals(
             listOf(UiState.Loading, UiState.Error("Network Request failed!")), receivedUiStates

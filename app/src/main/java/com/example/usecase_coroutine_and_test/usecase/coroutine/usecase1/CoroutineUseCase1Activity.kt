@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import coil.load
 import com.example.usecase_coroutine_and_test.constant.UiState
-import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCase1Binding
+import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 
 /**
  * single request network
@@ -14,7 +13,7 @@ import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCa
 
 class CoroutineUseCase1Activity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityCoroutineUseCase1Binding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
     private val case1ViewModel: CoroutineUseCase1ViewModel by viewModels { CoroutineUseCase1ViewModel.Factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,26 +21,19 @@ class CoroutineUseCase1Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupObserve()
-        case1ViewModel.getPokemonList(1)
+        case1ViewModel.getPokemonName(1)
     }
 
     private fun setupObserve() {
-        case1ViewModel.pokemonList.observe(this@CoroutineUseCase1Activity) { pokemonList ->
-            case1ViewModel.getPokemonInfo(pokemonList.results.first().name)
-        }
-
-        case1ViewModel.pokemonInfo.observe(this@CoroutineUseCase1Activity) { pokemonInfo ->
-            binding.run {
-                imageView.load(pokemonInfo.sprites.other.home.front_default)
-                imageView2.load(pokemonInfo.sprites.other.home.front_shiny)
-            }
-        }
-
         case1ViewModel.uiState().observe(this@CoroutineUseCase1Activity) { uiState ->
-            when(uiState) {
+            when (uiState) {
                 is UiState.Loading -> binding.progressBar.isVisible = true
                 is UiState.Success, is UiState.Error -> binding.progressBar.isVisible = false
             }
+        }
+
+        case1ViewModel.pokemonInfo().observe(this@CoroutineUseCase1Activity) { info ->
+            binding.tvName.text = info.name
         }
     }
 

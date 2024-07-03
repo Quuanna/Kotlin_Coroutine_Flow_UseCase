@@ -1,21 +1,30 @@
 package com.example.usecase_coroutine_and_test.core.model.response
 
+import com.google.gson.annotations.SerializedName
+
 data class PokemonInfoResponse(
     val abilities: List<Ability>,
-    val base_experience: Int, // 267
+    @SerializedName("base_experience")
+    val baseExperience: Int,
     val cries: Cries,
     val forms: List<Form>,
-    val game_indices: List<GameIndice>,
-    val height: Int, // 17
-    val held_items: List<Any>,
-    val id: Int, // 6
-    val is_default: Boolean, // true
-    val location_area_encounters: String, // https://pokeapi.co/api/v2/pokemon/6/encounters
+    @SerializedName("game_indices")
+    val gameIndices: List<GameIndice>,
+    val height: Int,
+    @SerializedName("held_items")
+    val heldItems: List<Any>,
+    val id: Int,
+    @SerializedName("is_default")
+    val isDefault: Boolean,
+    @SerializedName("location_area_encounters")
+    val locationAreaEncounters: String,
     val moves: List<Move>,
-    val name: String, // charizard
-    val order: Int, // 7
-    val past_abilities: List<Any>,
-    val past_types: List<Any>,
+    val name: String,
+    val order: Int,
+    @SerializedName("past_abilities")
+    val pastAbilities: List<Any>,
+    @SerializedName("past_types")
+    val pastTypes: List<Any>,
     val species: Species,
     val sprites: Sprites,
     val stats: List<Stat>,
@@ -24,143 +33,196 @@ data class PokemonInfoResponse(
 ) {
     data class Ability(
         val ability: Ability,
-        val is_hidden: Boolean, // false
-        val slot: Int // 1
+        @SerializedName("is_hidden")
+        val isHidden: Boolean,
+        val slot: Int
     ) {
         data class Ability(
-            val name: String, // blaze
-            val url: String // https://pokeapi.co/api/v2/ability/66/
+            val name: String,
+            val url: String
         )
     }
 
     data class Cries(
-        val latest: String, // https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/6.ogg
-        val legacy: String // https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/legacy/6.ogg
+        val latest: String,
+        val legacy: String
     )
 
     data class Form(
-        val name: String, // charizard
-        val url: String // https://pokeapi.co/api/v2/pokemon_form/6/
+        val name: String,
+        val url: String
     )
 
     data class GameIndice(
-        val game_index: Int, // 180
+        @SerializedName("game_index")
+        val gameIndex: Int,
         val version: Version
     ) {
         data class Version(
-            val name: String, // red
-            val url: String // https://pokeapi.co/api/v2/version/1/
+            val name: String,
+            val url: String
         )
     }
 
     data class Move(
         val move: Move,
-        val version_group_details: List<VersionGroupDetail>
+        @SerializedName("version_group_details")
+        val versionGroupDetails: List<VersionGroupDetail>
     ) {
         data class Move(
-            val name: String, // mega_punch
-            val url: String // https://pokeapi.co/api/v2/move/5/
+            val name: String,
+            val url: String
         )
 
         data class VersionGroupDetail(
-            val level_learned_at: Int, // 0
-            val move_learn_method: MoveLearnMethod,
-            val version_group: VersionGroup
+            @SerializedName("level_learned_at")
+            val levelLearnedAt: Int, // 0
+            @SerializedName("move_learn_method")
+            val moveLearnMethod: MoveLearnMethod,
+            @SerializedName("version_group")
+            val versionGroup: VersionGroup
         ) {
             data class MoveLearnMethod(
-                val name: String, // machine
-                val url: String // https://pokeapi.co/api/v2/move_learn_method/4/
+                val name: String,
+                val url: String
             )
 
             data class VersionGroup(
-                val name: String, // red_blue
-                val url: String // https://pokeapi.co/api/v2/version_group/1/
+                val name: String,
+                val url: String
             )
         }
     }
 
     data class Species(
-        val name: String, // charizard
-        val url: String // https://pokeapi.co/api/v2/pokemon_species/6/
+        val name: String,
+        val url: String
     )
 
     data class Sprites(
-        val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png
-        val back_female: Any, // null
-        val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/6.png
-        val back_shiny_female: Any, // null
-        val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png
-        val front_female: Any, // null
-        val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png
-        val front_shiny_female: Any, // null
+        @SerializedName("back_default")
+        val backDefault: String,
+        @SerializedName("back_female")
+        val backFemale: Any?,
+        @SerializedName("back_shiny")
+        val backShiny: String,
+        @SerializedName("back_shiny_female")
+        val backShinyFemale: Any?,
+        @SerializedName("front_default")
+        val frontDefault: String,
+        @SerializedName("front_female")
+        val frontFemale: Any?,
+        @SerializedName("front_shiny")
+        val frontShiny: String,
+        @SerializedName("front_shiny_female")
+        val frontShinyFemale: Any?,
         val other: Other,
         val versions: Versions
     ) {
         data class Other(
-            val dream_world: DreamWorld,
+            @SerializedName("dream_world")
+            val dreamWorld: DreamWorld,
             val home: Home,
-            val official_artwork: OfficialArtwork,
+            @SerializedName("official_artwork")
+            val officialArtwork: OfficialArtwork,
             val showdown: Showdown
         ) {
             data class DreamWorld(
-                val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream_world/6.svg
-                val front_female: Any // null
+                @SerializedName("front_default")
+                val frontDefault: String,
+                @SerializedName("front_female")
+                val frontFemale: Any?
             )
 
             data class Home(
-                val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/6.png
-                val front_female: Any, // null
-                val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/6.png
-                val front_shiny_female: Any // null
+                @SerializedName("front_default")
+                val frontDefault: String,
+                @SerializedName("front_female")
+                val frontFemale: Any?,
+                @SerializedName("front_shiny")
+                val frontShiny: String,
+                @SerializedName("front_shiny_female")
+                val frontShinyFemale: Any?
             )
 
             data class OfficialArtwork(
-                val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official_artwork/6.png
-                val front_shiny: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official_artwork/shiny/6.png
+                @SerializedName("front_default")
+                val frontDefault: String,
+                @SerializedName("front_shiny")
+                val frontShiny: String
             )
 
             data class Showdown(
-                val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/6.gif
-                val back_female: Any, // null
-                val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/shiny/6.gif
-                val back_shiny_female: Any, // null
-                val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/6.gif
-                val front_female: Any, // null
-                val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/shiny/6.gif
-                val front_shiny_female: Any // null
+                @SerializedName("back_default")
+                val backDefault: String,
+                @SerializedName("back_female")
+                val backFemale: Any?,
+                @SerializedName("back_shiny")
+                val backShiny: String,
+                @SerializedName("back_shiny_female")
+                val backShinyFemale: Any?,
+                @SerializedName("front_default")
+                val frontDefault: String,
+                @SerializedName("front_female")
+                val frontFemale: Any?,
+                @SerializedName("front_shiny")
+                val frontShiny: String,
+                @SerializedName("front_shiny_female")
+                val frontShinyFemale: Any?
             )
         }
 
         data class Versions(
-            val generation_i: GenerationI,
-            val generation_ii: GenerationIi,
-            val generation_iii: GenerationIii,
-            val generation_iv: GenerationIv,
-            val generation_v: GenerationV,
-            val generation_vi: GenerationVi,
-            val generation_vii: GenerationVii,
-            val generation_viii: GenerationViii
+            @SerializedName("generation_i")
+            val generationI: GenerationI,
+            @SerializedName("generation_ii")
+            val generationIi: GenerationIi,
+            @SerializedName("generation_iii")
+            val generationIii: GenerationIii,
+            @SerializedName("generation_iv")
+            val generationIv: GenerationIv,
+            @SerializedName("generation_v")
+            val generationV: GenerationV,
+            @SerializedName("generation_vi")
+            val generationVi: GenerationVi,
+            @SerializedName("generation_vii")
+            val generationVii: GenerationVii,
+            @SerializedName("generation_viii")
+            val generationViii: GenerationViii
         ) {
             data class GenerationI(
-                val red_blue: RedBlue,
+                @SerializedName("red_blue")
+                val redBlue: RedBlue,
                 val yellow: Yellow
             ) {
                 data class RedBlue(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/red_blue/back/6.png
-                    val back_gray: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/red_blue/back/gray/6.png
-                    val back_transparent: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/red_blue/transparent/back/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/red_blue/6.png
-                    val front_gray: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/red_blue/gray/6.png
-                    val front_transparent: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/red_blue/transparent/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_gray")
+                    val backGray: String,
+                    @SerializedName("back_transparent")
+                    val backTransparent: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_gray")
+                    val frontGray: String,
+                    @SerializedName("front_transparent")
+                    val frontTransparent: String
                 )
 
                 data class Yellow(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/yellow/back/6.png
-                    val back_gray: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/yellow/back/gray/6.png
-                    val back_transparent: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/yellow/transparent/back/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/yellow/6.png
-                    val front_gray: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/yellow/gray/6.png
-                    val front_transparent: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_i/yellow/transparent/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_gray")
+                    val backGray: String,
+                    @SerializedName("back_transparent")
+                    val backTransparent: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_gray")
+                    val frontGray: String,
+                    @SerializedName("front_transparent")
+                    val frontTransparent: String
                 )
             }
 
@@ -170,157 +232,247 @@ data class PokemonInfoResponse(
                 val silver: Silver
             ) {
                 data class Crystal(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/back/6.png
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/back/shiny/6.png
-                    val back_shiny_transparent: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/transparent/back/shiny/6.png
-                    val back_transparent: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/transparent/back/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/6.png
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/shiny/6.png
-                    val front_shiny_transparent: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/transparent/shiny/6.png
-                    val front_transparent: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/crystal/transparent/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("back_shiny_transparent")
+                    val backShinyTransparent: String,
+                    @SerializedName("back_transparent")
+                    val backTransparent: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_transparent")
+                    val frontShinyTransparent: String,
+                    @SerializedName("front_transparent")
+                    val frontTransparent: String
                 )
 
                 data class Gold(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/gold/back/6.png
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/gold/back/shiny/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/gold/6.png
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/gold/shiny/6.png
-                    val front_transparent: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/gold/transparent/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_transparent")
+                    val frontTransparent: String
                 )
 
                 data class Silver(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/silver/back/6.png
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/silver/back/shiny/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/silver/6.png
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/silver/shiny/6.png
-                    val front_transparent: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_ii/silver/transparent/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_transparent")
+                    val frontTransparent: String
                 )
             }
 
             data class GenerationIii(
                 val emerald: Emerald,
-                val firered_leafgreen: FireredLeafgreen,
-                val ruby_sapphire: RubySapphire
+                @SerializedName("firered_leafgreen")
+                val fireredLeafgreen: FireredLeafgreen,
+                @SerializedName("ruby_sapphire")
+                val rubySapphire: RubySapphire
             ) {
                 data class Emerald(
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/emerald/6.png
-                    val front_shiny: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/emerald/shiny/6.png
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String
                 )
 
                 data class FireredLeafgreen(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/firered_leafgreen/back/6.png
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/firered_leafgreen/back/shiny/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/firered_leafgreen/6.png
-                    val front_shiny: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/firered_leafgreen/shiny/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String
                 )
 
                 data class RubySapphire(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/ruby_sapphire/back/6.png
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/ruby_sapphire/back/shiny/6.png
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/ruby_sapphire/6.png
-                    val front_shiny: String // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iii/ruby_sapphire/shiny/6.png
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String
                 )
             }
 
             data class GenerationIv(
-                val diamond_pearl: DiamondPearl,
-                val heartgold_soulsilver: HeartgoldSoulsilver,
+                @SerializedName("diamond_pearl")
+                val diamondPearl: DiamondPearl,
+                @SerializedName("heartgold_soulsilver")
+                val heartGoldSoulSilver: HeartGoldSoulSilver,
                 val platinum: Platinum
             ) {
                 data class DiamondPearl(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/back/6.png
-                    val back_female: Any, // null
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/back/shiny/6.png
-                    val back_shiny_female: Any, // null
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/shiny/6.png
-                    val front_shiny_female: Any // null
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_female")
+                    val backFemale: Any?,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("back_shiny_female")
+                    val backShinyFemale: Any?,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?
                 )
 
-                data class HeartgoldSoulsilver(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/back/6.png
-                    val back_female: Any, // null
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/back/shiny/6.png
-                    val back_shiny_female: Any, // null
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/shiny/6.png
-                    val front_shiny_female: Any // null
+                data class HeartGoldSoulSilver(
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_female")
+                    val backFemale: Any?,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("back_shiny_female")
+                    val backShinyFemale: Any?,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?
                 )
 
                 data class Platinum(
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/back/6.png
-                    val back_female: Any, // null
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/back/shiny/6.png
-                    val back_shiny_female: Any, // null
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/shiny/6.png
-                    val front_shiny_female: Any // null
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_female")
+                    val backFemale: Any?,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("back_shiny_female")
+                    val backShinyFemale: Any?,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?
                 )
             }
 
             data class GenerationV(
-                val black_white: BlackWhite
+                @SerializedName("black_white")
+                val blackWhite: BlackWhite
             ) {
                 data class BlackWhite(
                     val animated: Animated,
-                    val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/back/6.png
-                    val back_female: Any, // null
-                    val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/back/shiny/6.png
-                    val back_shiny_female: Any, // null
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/shiny/6.png
-                    val front_shiny_female: Any // null
+                    @SerializedName("back_default")
+                    val backDefault: String,
+                    @SerializedName("back_female")
+                    val backFemale: Any?,
+                    @SerializedName("back_shiny")
+                    val backShiny: String,
+                    @SerializedName("back_shiny_female")
+                    val backShinyFemale: Any?,
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?
                 ) {
                     data class Animated(
-                        val back_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/back/6.gif
-                        val back_female: Any, // null
-                        val back_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/back/shiny/6.gif
-                        val back_shiny_female: Any, // null
-                        val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/6.gif
-                        val front_female: Any, // null
-                        val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/shiny/6.gif
-                        val front_shiny_female: Any // null
+                        @SerializedName("back_default")
+                        val backDefault: String,
+                        @SerializedName("back_female")
+                        val backFemale: Any?,
+                        @SerializedName("back_shiny")
+                        val backShiny: String,
+                        @SerializedName("back_shiny_female")
+                        val backShinyFemale: Any?,
+                        @SerializedName("front_default")
+                        val frontDefault: String,
+                        @SerializedName("front_female")
+                        val frontFemale: Any?,
+                        @SerializedName("front_shiny")
+                        val frontShiny: String,
+                        @SerializedName("front_shiny_female")
+                        val frontShinyFemale: Any?
                     )
                 }
             }
 
             data class GenerationVi(
-                val omegaruby_alphasapphire: OmegarubyAlphasapphire,
-                val x_y: XY
+                @SerializedName("omegaruby_alphasapphire")
+                val omegaRubyAlphaSapphire: OmegaRubyAlphaSapphire,
+                @SerializedName("x_y")
+                val xy: XY
             ) {
-                data class OmegarubyAlphasapphire(
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/omegaruby_alphasapphire/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/omegaruby_alphasapphire/shiny/6.png
-                    val front_shiny_female: Any // null
+                data class OmegaRubyAlphaSapphire(
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?
                 )
 
                 data class XY(
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/x_y/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/x_y/shiny/6.png
-                    val front_shiny_female: Any // null
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?,
+                    @SerializedName("front_default")
+                    val frontDefault: String
                 )
             }
 
             data class GenerationVii(
                 val icons: Icons,
-                val ultra_sun_ultra_moon: UltraSunUltraMoon
+                @SerializedName("ultra_sun_ultra_moon")
+                val ultraSunUltraMoon: UltraSunUltraMoon
             ) {
                 data class Icons(
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vii/icons/6.png
-                    val front_female: Any // null
+                    @SerializedName("frontDefault")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?
                 )
 
                 data class UltraSunUltraMoon(
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vii/ultra_sun_ultra_moon/6.png
-                    val front_female: Any, // null
-                    val front_shiny: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vii/ultra_sun_ultra_moon/shiny/6.png
-                    val front_shiny_female: Any // null
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?,
+                    @SerializedName("front_shiny")
+                    val frontShiny: String,
+                    @SerializedName("front_shiny_female")
+                    val frontShinyFemale: Any?
                 )
             }
 
@@ -328,15 +480,18 @@ data class PokemonInfoResponse(
                 val icons: Icons
             ) {
                 data class Icons(
-                    val front_default: String, // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_viii/icons/6.png
-                    val front_female: Any // null
+                    @SerializedName("front_default")
+                    val frontDefault: String,
+                    @SerializedName("front_female")
+                    val frontFemale: Any?
                 )
             }
         }
     }
 
     data class Stat(
-        val base_stat: Int, // 78
+        @SerializedName("base_stat")
+        val baseStat: Int, // 78
         val effort: Int, // 0
         val stat: Stat
     ) {

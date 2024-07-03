@@ -22,6 +22,7 @@ class FakeSuccessApi : PokemonService {
     }
 
     override suspend fun getPokemonInfo(name: String): PokemonInfoResponse {
+        // 此案例不用
         throw EndpointShouldNotBeCalledException()
     }
 }
