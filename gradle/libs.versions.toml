@@ -18,9 +18,11 @@ squareupRetrofit = "2.11.0"
 squareupOkhttp = "4.12.0"
 workRuntime = "2.9.0"
 room = "2.6.1"
+coil = "2.2.2"
 
 
 kotlinxcoroutines = "1.8.1"
+coreTesting = "2.2.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -50,13 +52,15 @@ squareup-retrofit-mock = {group= "com.squareup.retrofit2", name = "retrofit-mock
 squareup-okhttp-bom = {group= "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "squareupOkhttp"}
 squareup-okhttp = {group= "com.squareup.okhttp3", name = "okhttp"}
 squareup-okhttp-interceptor = {group= "com.squareup.okhttp3", name = "logging-interceptor"}
-#squareup-okhttp-mockwebserver = {group= "com.squareup.okhttp3", name = "mockwebserver"}
 
 kotlinx-coroutine-core = {group= "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxcoroutines"}
 kotlinx-coroutine = {group= "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxcoroutines"}
 kotlinx-coroutine-test = {group= "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxcoroutines"}
 
+kotlin-coil-ktx = {group="io.coil-kt", name = "coil", version.ref = "coil"}
+
 google-code-gson= {group= "com.google.code.gson", name = "gson", version.ref = "googlecodegson"}
+androidx-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTesting" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,8 +1,8 @@
 package com.example.usecase_coroutine_and_test.constant
 
-sealed class UiStates {
-    data object Loading: UiStates()
-    data class Success(val msg: String): UiStates()
-    data class Error(val msg: String): UiStates()
+sealed class UiState {
+    data object Loading: UiState()
+    data object Success : UiState()
+    data class Error(val errorMsg: String): UiState()
 
 }

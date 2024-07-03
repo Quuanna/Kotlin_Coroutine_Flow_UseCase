@@ -56,6 +56,7 @@ dependencies {
 
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.core.testing)
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.work.runtime.ktx)
@@ -64,7 +65,6 @@ dependencies {
     implementation(platform(libs.squareup.okhttp.bom))
     implementation(libs.squareup.okhttp)
     implementation(libs.squareup.okhttp.interceptor)
-//    implementation(libs.squareup.okhttp.mockwebserver)
 
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.retrofit.gson)
@@ -73,6 +73,8 @@ dependencies {
     implementation(libs.kotlinx.coroutine)
     implementation(libs.kotlinx.coroutine.core)
     implementation(libs.kotlinx.coroutine.test)
+
+    implementation(libs.kotlin.coil.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

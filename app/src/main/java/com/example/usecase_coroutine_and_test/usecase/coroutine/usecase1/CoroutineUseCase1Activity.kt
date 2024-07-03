@@ -1,12 +1,16 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase1
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
-import com.example.usecase_coroutine_and_test.R
+import androidx.core.view.isVisible
+import coil.load
+import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCase1Binding
+
+/**
+ * single request network
+ */
 
 class CoroutineUseCase1Activity : AppCompatActivity() {
 
@@ -17,16 +21,28 @@ class CoroutineUseCase1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        case1ViewModel.pokemonList.observe(this@CoroutineUseCase1Activity) { pokemonList ->
-            Log.d("TEST", pokemonList.toList().toString())
-        }
+        setupObserve()
+        case1ViewModel.getPokemonList(1)
+    }
 
+    private fun setupObserve() {
+        case1ViewModel.pokemonList.observe(this@CoroutineUseCase1Activity) { pokemonList ->
+            case1ViewModel.getPokemonInfo(pokemonList.results.first().name)
+        }
 
         case1ViewModel.pokemonInfo.observe(this@CoroutineUseCase1Activity) { pokemonInfo ->
-            Log.d("TEST", pokemonInfo.toString())
+            binding.run {
+                imageView.load(pokemonInfo.sprites.other.home.front_default)
+                imageView2.load(pokemonInfo.sprites.other.home.front_shiny)
+            }
         }
 
-        case1ViewModel.getPokemonList(25)
-        case1ViewModel.getPokemonInfo("")
+        case1ViewModel.uiState().observe(this@CoroutineUseCase1Activity) { uiState ->
+            when(uiState) {
+                is UiState.Loading -> binding.progressBar.isVisible = true
+                is UiState.Success, is UiState.Error -> binding.progressBar.isVisible = false
+            }
+        }
     }
+
 }
