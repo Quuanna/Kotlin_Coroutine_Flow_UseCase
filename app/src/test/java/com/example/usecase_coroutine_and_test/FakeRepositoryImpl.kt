@@ -1,4 +1,4 @@
-package com.example.usecase_coroutine_and_test.useCase
+package com.example.usecase_coroutine_and_test
 
 import com.example.usecase_coroutine_and_test.core.api.PokemonService
 import com.example.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse

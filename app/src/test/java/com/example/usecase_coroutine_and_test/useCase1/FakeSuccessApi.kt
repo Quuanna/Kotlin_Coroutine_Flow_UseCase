@@ -1,20 +1,22 @@
-package com.example.usecase_coroutine_and_test.useCase
+package com.example.usecase_coroutine_and_test.useCase1
 
 import com.example.usecase_coroutine_and_test.EndpointShouldNotBeCalledException
 import com.example.usecase_coroutine_and_test.core.api.PokemonService
 import com.example.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse
 import com.example.usecase_coroutine_and_test.core.model.response.PokemonListResponse
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.ResponseBody
-import retrofit2.HttpException
-import retrofit2.Response
 
-class FakeErrorApi : PokemonService {
+class FakeSuccessApi : PokemonService {
+
     override suspend fun getPokemonList(limit: Int, offset: Int): PokemonListResponse {
-        throw HttpException(
-            Response.error<PokemonListResponse>(
-                500,
-                ResponseBody.create("application/json".toMediaTypeOrNull(), "")
+        return PokemonListResponse(
+            count = 1302,
+            next = "https://pokeapi.co/api/v2/pokemon/?offset=25&limit=25",
+            previous = null,
+            results = listOf(
+                PokemonListResponse.Result(
+                    "bulbasaur",
+                    " https://pokeapi.co/api/v2/pokemon/1/"
+                )
             )
         )
     }

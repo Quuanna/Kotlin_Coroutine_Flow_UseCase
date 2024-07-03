@@ -1,6 +1,7 @@
-package com.example.usecase_coroutine_and_test.useCase
+package com.example.usecase_coroutine_and_test.useCase1
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.usecase_coroutine_and_test.FakeRepositoryImpl
 import com.example.usecase_coroutine_and_test.ReplaceMainDispatcherRule
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.usecase.coroutine.usecase1.CoroutineUseCase1ViewModel
@@ -27,38 +28,35 @@ class SingleNetworkRequestTest {
     fun `viewModel注入假的ApiService和Repo後測試getPokemonList回傳成功狀態`() = runTest {
         val fakeApi = FakeSuccessApi()
         val fakeRepository = FakeRepositoryImpl(fakeApi)
-        val viewModel = CoroutineUseCase1ViewModel(fakeRepository)
-        observeViewModel(viewModel)
-        assertTrue(receivedUiStates.isEmpty())
-
-        viewModel.getPokemonName(1)
-        assertEquals(listOf(UiState.Loading, UiState.Success), receivedUiStates)
-    }
-
-    private fun observeViewModel(viewModel: CoroutineUseCase1ViewModel) {
-        viewModel.uiState().observeForever { uiState ->
-            if (uiState != null) {
-                receivedUiStates.add(uiState)
-            }
+        CoroutineUseCase1ViewModel(fakeRepository).apply {
+            observe()
+            assertTrue(receivedUiStates.isEmpty())
+            getPokemonName(1)
         }
+        assertEquals(listOf(UiState.Loading, UiState.Success), receivedUiStates)
     }
 
     @Test
     fun `viewModel注入假的ApiService和Repo後測試getPokemonList回傳失敗狀態`() = runTest {
         val fakeApi = FakeErrorApi()
         val fakeRepository = FakeRepositoryImpl(fakeApi)
-        val viewModel = CoroutineUseCase1ViewModel(fakeRepository)
-        observeViewModel(viewModel)
-
-        assertTrue(receivedUiStates.isEmpty())
-
-        viewModel.getPokemonName(1)
+        CoroutineUseCase1ViewModel(fakeRepository).apply {
+            observe()
+            assertTrue(receivedUiStates.isEmpty())
+            getPokemonName(1)
+        }
 
         assertEquals(
             listOf(UiState.Loading, UiState.Error("Network Request failed!")), receivedUiStates
         )
     }
 
-
+    private fun CoroutineUseCase1ViewModel.observe() {
+        uiState().observeForever { uiState ->
+            if (uiState != null) {
+                receivedUiStates.add(uiState)
+            }
+        }
+    }
 
 }
