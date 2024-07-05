@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 
 class CoroutineUseCase1ViewModel(private val repository: PokemonRepository) :
-    BaseViewModel<UiState>() {
+    BaseViewModel<PokemonInfo>() {
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

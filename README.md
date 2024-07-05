@@ -3,7 +3,7 @@
 1. Perform single network request
 2. Perform two **sequential** network requests
 3. Perform network requests **concurrently**
-4. Perform Network requests timeout or retry
+4. Perform network requests timeout or retry
 5. Room and Coroutines Perform "offline-first"
 6. Coroutines Exception Handling
 7. Continue Coroutine execution when the user leaves the screen
