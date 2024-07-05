@@ -13,7 +13,7 @@ import com.example.usecase_coroutine_and_test.repo.PokemonRepositoryImpl
 import com.example.usecase_coroutine_and_test.usecase.BaseViewModel
 import kotlinx.coroutines.launch
 
-class CoroutineUseCase2ViewModel(val repository: PokemonRepository) : BaseViewModel<UiState>() {
+class CoroutineUseCase2ViewModel(val repository: PokemonRepository) : BaseViewModel<PokemonInfo>() {
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
