@@ -23,8 +23,11 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
 
     val sequentiallyResultOrder: LiveData<List<PokemonApiResultOrder>> get() = _sequentiallyResultOrder
     val concurrentlyResultOrder: LiveData<List<PokemonApiResultOrder>> get() = _concurrentlyResultOrder
+    val networkSessionTotalTime: LiveData<Long> get() = _networkSessionTotalTime
     private var _sequentiallyResultOrder = MutableLiveData<List<PokemonApiResultOrder>>()
     private var _concurrentlyResultOrder = MutableLiveData<List<PokemonApiResultOrder>>()
+    private var _networkSessionTotalTime = MutableLiveData<Long>()
+
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
@@ -35,6 +38,7 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
     }
 
     fun getPokemonSequentially() {
+        uiState.value = UiState.Loading
         viewModelScope.launch {
             val one = repository.fetchPokemonList(1)
             val two = repository.fetchPokemonList(2)
@@ -44,19 +48,18 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
             resultList.forEachIndexed { index, result ->
                 if (result.isSuccess) {
                     try {
-                        Log.d("TEST", "同步 = $index + result = ${result.getOrThrow().results.first().name}")
                         orderList.add(PokemonApiResultOrder(orderNum = index, responseText= result.getOrThrow().results.first().name))
                     } catch (e: Exception) {
                         uiState.value = UiState.Error(e.message.toString())
                     }
-                } else {
-                    uiState.value = UiState.Error()
                 }
             }
 
             if (orderList.isNotEmpty()) {
                 _sequentiallyResultOrder.value = orderList
                 uiState.value = UiState.Success
+            } else {
+                uiState.value = UiState.Error()
             }
         }
     }
@@ -66,15 +69,13 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
         val twoDeferred = viewModelScope.async { repository.fetchPokemonList(2) }
         val threeDeferred = viewModelScope.async { repository.fetchPokemonList(3) }
         val orderList: ArrayList<PokemonApiResultOrder> = arrayListOf()
+        uiState.value = UiState.Loading
         viewModelScope.launch {
             val deferredList = awaitAll(oneDeferred, twoDeferred, threeDeferred)
             try {
                 deferredList.forEachIndexed { index, result ->
                     if (result.isSuccess) {
-                        Log.d("TEST", "非同步 = $index +　result = ${result.getOrThrow().results.first().name}")
                         orderList.add(PokemonApiResultOrder(index, result.getOrThrow().results.first().name))
-                    } else {
-                        uiState.value = UiState.Error()
                     }
                 }
             } catch (e: Exception) {
@@ -84,9 +85,14 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
             if (orderList.isNotEmpty()) {
                 _concurrentlyResultOrder.value = orderList
                 uiState.value = UiState.Success
+            } else {
+                uiState.value = UiState.Error()
             }
         }
     }
 
+    fun getNetworkSessionTotalTime(time: Long) {
+        _networkSessionTotalTime.value = time
+    }
 
 }
