@@ -8,6 +8,9 @@ import coil.load
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 
+/**
+ * Perform two **sequential** network requests
+ */
 class CoroutineUseCase2Activity : AppCompatActivity() {
     private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
     private val case1ViewModel: CoroutineUseCase2ViewModel by viewModels { CoroutineUseCase2ViewModel.Factory }
