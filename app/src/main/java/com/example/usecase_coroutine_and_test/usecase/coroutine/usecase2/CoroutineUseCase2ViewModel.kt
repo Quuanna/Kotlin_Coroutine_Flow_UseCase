@@ -24,17 +24,15 @@ class CoroutineUseCase2ViewModel(val repository: PokemonRepository) : BaseViewMo
     }
 
     fun getPokemonImage(page: Int) {
-        viewModelScope.launch {
-            uiState.value = UiState.Loading
-            getPokemonList(page) { name ->
-                try {
-                    getPokemonInfo(name) { imageUrl ->
-                        pokemonInfo.value = PokemonInfo(name, imageUrl)
-                        uiState.value = UiState.Success
-                    }
-                } catch (e: Exception) {
-                    uiState.value = UiState.Error(e.message.toString())
+        uiState.value = UiState.Loading
+        getPokemonList(page) { name ->
+            try {
+                getPokemonInfo(name) { imageUrl ->
+                    pokemonInfo.value = PokemonInfo(name, imageUrl)
+                    uiState.value = UiState.Success
                 }
+            } catch (e: Exception) {
+                uiState.value = UiState.Error(e.message.toString())
             }
         }
     }

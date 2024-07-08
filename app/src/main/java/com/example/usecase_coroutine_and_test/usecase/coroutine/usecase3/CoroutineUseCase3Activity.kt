@@ -8,6 +8,9 @@ import com.example.usecase_coroutine_and_test.R
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseTextBinding
 
+/**
+ * Perform network requests concurrently compare Sequentially run time
+ */
 class CoroutineUseCase3Activity : AppCompatActivity() {
 
     private val binding by lazy { ActivityCoroutineUseCaseTextBinding.inflate(layoutInflater) }

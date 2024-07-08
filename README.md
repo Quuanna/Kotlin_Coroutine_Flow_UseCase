@@ -2,12 +2,14 @@
 # Coroutine Use Case
 1. Perform single network request
 2. Perform two **sequential** network requests
-3. Perform network requests **concurrently**
-4. Perform network requests timeout or retry
-5. Room and Coroutines Perform "offline-first"
-6. Coroutines Exception Handling
-7. Continue Coroutine execution when the user leaves the screen
-8. Using WorkManager with Coroutines
+3. Perform network requests **concurrently** compare **Sequentially** run time
+4. Perform network requests timeout Use suspending function `withTimeout()`
+5. retry network requests 
+6. Perform network requests timeout or retry
+7. Room and Coroutines Perform "offline-first"
+8. Coroutines Exception Handling
+9. Continue Coroutine execution when the user leaves the screen
+10. Using WorkManager with Coroutines
 
 # Flow Use Case
 1. Flow Basics
