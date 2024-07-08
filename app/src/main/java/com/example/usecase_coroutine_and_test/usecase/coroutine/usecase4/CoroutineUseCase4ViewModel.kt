@@ -26,20 +26,19 @@ class CoroutineUseCase4ViewModel(val repository: PokemonRepository) : BaseViewMo
 
     fun performNetworkRequest(timeout: Long) {
         uiState.value = UiState.Loading
-        // usingWithTimeout(timeout)
-        usingWithTimeoutOrNull(timeout= timeout)
+//         usingWithTimeout(timeout = timeout)
+         usingWithTimeoutOrNull(timeout= timeout)
     }
 
     private fun usingWithTimeout(page: Int = 1,timeout: Long) {
-        uiState.value = UiState.Loading
         viewModelScope.launch {
             try {
-                val recentVersions = withTimeout(timeout) {
+                withTimeout(timeout) {
                     getPokemonList(page) { name ->
-                        getPokemonInfo(name) { imageUrl ->
-                            pokemonInfo.value = PokemonInfo(name, imageUrl)
-                            uiState.value = UiState.Success
-                        }
+                        pokemonInfo.value = PokemonInfo(
+                            name,
+                            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                        )
                     }
                 }
                 uiState.value = UiState.Success
@@ -53,19 +52,18 @@ class CoroutineUseCase4ViewModel(val repository: PokemonRepository) : BaseViewMo
 
 
     private fun usingWithTimeoutOrNull(page: Int = 1, timeout: Long) {
-        uiState.value = UiState.Loading
         viewModelScope.launch {
             try {
-                val recentVersions = withTimeoutOrNull(timeout) {
+                val pokemon = withTimeoutOrNull(timeout) {
                     getPokemonList(page) { name ->
-                        getPokemonInfo(name) { imageUrl ->
-                            pokemonInfo.value = PokemonInfo(name, imageUrl)
-                            uiState.value = UiState.Success
-                        }
+                        pokemonInfo.value = PokemonInfo(
+                            name,
+                            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                            )
                     }
                 }
 
-                if (recentVersions != null) {
+                if (pokemon != null) {
                     uiState.value = UiState.Success
                 } else {
                     uiState.value = UiState.Error("Network Request timed out!")
@@ -88,15 +86,4 @@ class CoroutineUseCase4ViewModel(val repository: PokemonRepository) : BaseViewMo
         }
     }
 
-    private fun getPokemonInfo(name: String, callback: (String) -> Unit) {
-        viewModelScope.launch {
-            repository.fetchPokemonInfo(name).run {
-                if (isSuccess) {
-                    callback(getOrThrow().sprites.other.home.frontDefault)
-                } else {
-                    uiState.value = UiState.Error()
-                }
-            }
-        }
-    }
 }

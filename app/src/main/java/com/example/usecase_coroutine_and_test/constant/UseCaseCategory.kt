@@ -19,10 +19,10 @@ data class UseCaseCategory(val useCases: MutableList<out Enum<*>>)
 enum class CoroutineUseCaseType(val descriptor: String, val targetActivity: Class<out AppCompatActivity>) {
     USE_CASE_1("1. Perform single network request", CoroutineUseCase1Activity::class.java),
     USE_CASE_2("2. Perform two sequential network requests", CoroutineUseCase2Activity::class.java),
-    USE_CASE_3("3. Perform network requests concurrently", CoroutineUseCase3Activity::class.java),
-    USE_CASE_4("4. Perform Network requests timeout or retry", CoroutineUseCase4Activity::class.java),
-    USE_CASE_5("5. Room and Coroutines Perform offline-first", CoroutineUseCase5Activity::class.java),
-    USE_CASE_6("6. Coroutines Exception Handling", CoroutineUseCase6Activity::class.java),
+    USE_CASE_3("3. Perform network requests concurrently compare Sequentially run time", CoroutineUseCase3Activity::class.java),
+    USE_CASE_4("4. Perform network requests timeout Use suspending function `withTimeout()`", CoroutineUseCase4Activity::class.java),
+    USE_CASE_5("5. Perform retry network requests ", CoroutineUseCase5Activity::class.java),
+    USE_CASE_6("6. Perform network requests timeout or retry", CoroutineUseCase6Activity::class.java),
     USE_CASE_7("7. Continue Coroutine execution when the user leaves the screen", CoroutineUseCase7Activity::class.java),
     USE_CASE_8("8. Using WorkManager with Coroutines", CoroutineUseCase8Activity::class.java),
 }

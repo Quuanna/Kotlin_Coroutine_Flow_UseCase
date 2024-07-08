@@ -1,6 +1,7 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase4
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,7 @@ import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 
 /**
- * Perform network requests timeout or retry
+ * Perform network requests timeout Use suspending function `withTimeout()`
  */
 class CoroutineUseCase4Activity : AppCompatActivity() {
     private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
@@ -25,25 +26,35 @@ class CoroutineUseCase4Activity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val timeOut = binding.editTextTimeOut.text.toString().toLongOrNull()
-        if (timeOut != null) {
-            viewMode.performNetworkRequest(timeOut)
-        }
-
+        setupObserve()
         initView()
     }
 
-    private fun initView() {
+    private fun setupObserve() {
         viewMode.uiState().observe(this) { uiState ->
             when (uiState) {
                 is UiState.Loading -> binding.progressBar.isVisible = true
-                is UiState.Success, is UiState.Error -> binding.progressBar.isVisible = false
+                is UiState.Success -> binding.progressBar.isVisible = false
+                is UiState.Error -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(this, uiState.errorMsg, Toast.LENGTH_LONG).show()
+                }
             }
         }
 
         viewMode.pokemonInfo().observe(this) { info ->
             binding.tvName.text = info.name
             binding.imageView.load(info.imageUrl)
+        }
+
+    }
+
+    private fun initView() {
+        binding.button.setOnClickListener {
+            val timeout = binding.editTextTimeOut.text.toString().toLongOrNull()
+            if (timeout != null) {
+                viewMode.performNetworkRequest(timeout = timeout)
+            }
         }
     }
 }
