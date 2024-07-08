@@ -6,9 +6,10 @@ import com.example.usecase_coroutine_and_test.core.model.response.PokemonListRes
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 
-class FakeSuccessApi(): PokemonService {
+class FakeSuccessApi(private val responseDelay: Long): PokemonService {
 
     override suspend fun getPokemonList(limit: Int, offset: Int): PokemonListResponse {
+        delay(responseDelay)
         return PokemonListResponse(
             count = 1302,
             next = "https://pokeapi.co/api/v2/pokemon/?offset=25&limit=25",

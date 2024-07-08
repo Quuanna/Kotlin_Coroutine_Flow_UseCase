@@ -23,11 +23,8 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
 
     val sequentiallyResultOrder: LiveData<List<PokemonApiResultOrder>> get() = _sequentiallyResultOrder
     val concurrentlyResultOrder: LiveData<List<PokemonApiResultOrder>> get() = _concurrentlyResultOrder
-    val networkSessionTotalTime: LiveData<Long> get() = _networkSessionTotalTime
     private var _sequentiallyResultOrder = MutableLiveData<List<PokemonApiResultOrder>>()
     private var _concurrentlyResultOrder = MutableLiveData<List<PokemonApiResultOrder>>()
-    private var _networkSessionTotalTime = MutableLiveData<Long>()
-
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
@@ -89,10 +86,6 @@ class CoroutineUseCase3ViewModel(val repository: PokemonRepository) : BaseViewMo
                 uiState.value = UiState.Error()
             }
         }
-    }
-
-    fun getNetworkSessionTotalTime(time: Long) {
-        _networkSessionTotalTime.value = time
     }
 
 }

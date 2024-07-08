@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.usecase_coroutine_and_test.R
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseTextBinding
 
@@ -11,10 +12,12 @@ class CoroutineUseCase3Activity : AppCompatActivity() {
 
     private val binding by lazy { ActivityCoroutineUseCaseTextBinding.inflate(layoutInflater) }
     private val viewModel: CoroutineUseCase3ViewModel by viewModels { CoroutineUseCase3ViewModel.Factory }
+    private var operationStartTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
 
         viewModel.getPokemonSequentially()
         viewModel.getPokemonConcurrently()
@@ -23,6 +26,7 @@ class CoroutineUseCase3Activity : AppCompatActivity() {
 
     private fun setupObserve() {
         viewModel.sequentiallyResultOrder.observe(this@CoroutineUseCase3Activity) { map ->
+            binding.textViewDuration.text = getDuration()
             val stringBuilder = StringBuilder()
             binding.run {
                 map.forEach { (key, value) ->
@@ -36,8 +40,8 @@ class CoroutineUseCase3Activity : AppCompatActivity() {
         }
 
         viewModel.concurrentlyResultOrder.observe(this@CoroutineUseCase3Activity) { map ->
+            binding.textViewDuration2.text = getDuration()
             val stringBuilder = StringBuilder()
-
             binding.run {
                 map.forEach { (key, value) ->
                     if (tvTextTwo.text.isNotEmpty()) {
@@ -52,9 +56,17 @@ class CoroutineUseCase3Activity : AppCompatActivity() {
 
         viewModel.uiState().observe(this@CoroutineUseCase3Activity) { state ->
             when (state) {
-                is UiState.Loading -> binding.progressBar.isVisible = true
+                is UiState.Loading -> {
+                    operationStartTime = System.currentTimeMillis()
+                    binding.progressBar.isVisible = true
+                }
                 is UiState.Error, UiState.Success -> binding.progressBar.isVisible = false
             }
         }
+    }
+
+    private fun getDuration(): String {
+        val duration = System.currentTimeMillis() - operationStartTime
+       return getString(R.string.duration, duration)
     }
 }
