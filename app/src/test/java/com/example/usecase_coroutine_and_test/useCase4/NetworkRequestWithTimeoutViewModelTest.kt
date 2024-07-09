@@ -1,9 +1,9 @@
 package com.example.usecase_coroutine_and_test.useCase4
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.usecase_coroutine_and_test.FakeRepositoryImpl
 import com.example.usecase_coroutine_and_test.ReplaceMainDispatcherRule
 import com.example.usecase_coroutine_and_test.constant.UiState
-import com.example.usecase_coroutine_and_test.repo.PokemonRepositoryImpl
 import com.example.usecase_coroutine_and_test.usecase.coroutine.usecase4.CoroutineUseCase4ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -27,10 +27,10 @@ class NetworkRequestWithTimeoutViewModelTest {
     @Test
     fun `performNetworkRequest() should return Success UiState on successful network request within timeout`() =
         runTest {
-            val responseDelay = 1500L
-            val timeout = 1001L
+            val responseDelay = 1000L // 模擬API運行時間
+            val timeout = 1001L // 指定的逾時持續時間
             val fakeApi = FakeSuccessApi(responseDelay)
-            val repository = PokemonRepositoryImpl(fakeApi)
+            val repository = FakeRepositoryImpl(fakeApi)
             val viewModel = CoroutineUseCase4ViewModel(repository)
             viewModel.observe()
 
@@ -46,10 +46,10 @@ class NetworkRequestWithTimeoutViewModelTest {
     @Test
     fun `performNetworkRequest() should return Error UiState with timeout error message if timeout gets exceeded`() =
         runTest {
-            val responseDelay = 1500L
+            val responseDelay = 1000L
             val timeout = 999L
             val fakeApi = FakeSuccessApi(responseDelay)
-            val repository = PokemonRepositoryImpl(fakeApi)
+            val repository = FakeRepositoryImpl(fakeApi)
             val viewModel = CoroutineUseCase4ViewModel(repository)
             viewModel.observe()
 
@@ -71,10 +71,10 @@ class NetworkRequestWithTimeoutViewModelTest {
     @Test
     fun `performNetworkRequest() should return Error UiState on unsuccessful network response`() =
         runTest {
-            val responseDelay = 1500L
+            val responseDelay = 1000L
             val timeout = 1001L
             val fakeApi = FakeErrorApi(responseDelay)
-            val repository = PokemonRepositoryImpl(fakeApi)
+            val repository = FakeRepositoryImpl(fakeApi)
             val viewModel = CoroutineUseCase4ViewModel(repository)
             viewModel.observe()
 

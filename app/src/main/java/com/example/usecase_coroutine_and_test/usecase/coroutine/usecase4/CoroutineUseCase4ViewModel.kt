@@ -33,14 +33,13 @@ class CoroutineUseCase4ViewModel(val repository: PokemonRepository) : BaseViewMo
     private fun usingWithTimeout(page: Int = 1,timeout: Long) {
         viewModelScope.launch {
             try {
-                withTimeout(timeout) {
-                    getPokemonList(page) { name ->
-                        pokemonInfo.value = PokemonInfo(
-                            name,
-                            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-                        )
-                    }
+                val pokemon = withTimeout(timeout) {
+                    repository.fetchPokemonList(page)
                 }
+                pokemonInfo.value = PokemonInfo(
+                    pokemon.getOrThrow().results.first().name,
+                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                )
                 uiState.value = UiState.Success
             } catch (timeoutCancellationException: TimeoutCancellationException) {
                 uiState.value = UiState.Error("Network Request timed out!")
@@ -55,15 +54,14 @@ class CoroutineUseCase4ViewModel(val repository: PokemonRepository) : BaseViewMo
         viewModelScope.launch {
             try {
                 val pokemon = withTimeoutOrNull(timeout) {
-                    getPokemonList(page) { name ->
-                        pokemonInfo.value = PokemonInfo(
-                            name,
-                            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-                            )
-                    }
+                    repository.fetchPokemonList(page)
                 }
 
                 if (pokemon != null) {
+                    pokemonInfo.value = PokemonInfo(
+                        pokemon.getOrThrow().results.first().name,
+                        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                    )
                     uiState.value = UiState.Success
                 } else {
                     uiState.value = UiState.Error("Network Request timed out!")
@@ -73,17 +71,4 @@ class CoroutineUseCase4ViewModel(val repository: PokemonRepository) : BaseViewMo
             }
         }
     }
-
-
-
-    private suspend  fun getPokemonList(page: Int, callback: (String) -> Unit) {
-        repository.fetchPokemonList(page).run {
-            if (isSuccess) {
-                callback(getOrThrow().results.first().name)
-            } else {
-                uiState.value = UiState.Error()
-            }
-        }
-    }
-
 }
