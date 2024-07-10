@@ -1,6 +1,5 @@
 package com.example.usecase_coroutine_and_test.core.api
 
-import com.example.usecase_coroutine_and_test.core.HttpInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +15,6 @@ class PokemonCline {
                 .apply { level = HttpLoggingInterceptor.Level.BODY }
 
             val okhttpCline = OkHttpClient.Builder()
-                .addInterceptor(HttpInterceptor()) //處理Http status code
                 .addInterceptor(loggingInterceptor)
                 .build()
 
