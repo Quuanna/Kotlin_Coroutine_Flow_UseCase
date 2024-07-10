@@ -1,4 +1,4 @@
-package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase5
+package com.example.usecase_coroutine_and_test.mock
 
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType

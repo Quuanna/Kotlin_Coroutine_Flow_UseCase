@@ -1,7 +1,7 @@
 package com.example.usecase_coroutine_and_test.useCase5
 
 import com.example.usecase_coroutine_and_test.data.PokemonInfo
-import com.example.usecase_coroutine_and_test.usecase.coroutine.usecase5.MockApiService
+import com.example.usecase_coroutine_and_test.mock.MockApiService
 import kotlinx.coroutines.delay
 import java.io.IOException
 

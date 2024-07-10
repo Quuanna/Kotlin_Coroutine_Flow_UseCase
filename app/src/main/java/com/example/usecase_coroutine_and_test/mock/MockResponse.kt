@@ -1,4 +1,4 @@
-package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase5
+package com.example.usecase_coroutine_and_test.mock
 
 data class MockResponse(
     val path: String,

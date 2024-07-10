@@ -8,8 +8,15 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.usecase_coroutine_and_test.R
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 
+
+/**
+ * Perform network requests timeout or retry
+ */
 class CoroutineUseCase6Activity : AppCompatActivity() {
+
     private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
