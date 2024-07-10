@@ -1,16 +1,19 @@
 package com.example.usecase_coroutine_and_test.mock
 
 import com.example.usecase_coroutine_and_test.data.PokemonInfo
-import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface MockApiService {
 
     @GET("pokemon")
     suspend fun getPokemonInfo(): PokemonInfo
+
+    @GET("pokemon/{code}")
+    suspend fun getPokemonInfoCode(@Path("code") code: Int): PokemonInfo
 }
 
 fun createMockApi(interceptor: MockNetworkInterceptor): MockApiService {
