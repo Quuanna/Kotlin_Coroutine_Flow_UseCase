@@ -69,7 +69,7 @@ class CoroutineUseCase6VIewModel(val api: MockApiService = mockApi()) : BaseView
             try {
                 return block()
             } catch (e: Exception) {
-                // network error
+                uiState.value = UiState.Error(e.message.toString())
             }
             delay(delayBetweenRetries)
         }

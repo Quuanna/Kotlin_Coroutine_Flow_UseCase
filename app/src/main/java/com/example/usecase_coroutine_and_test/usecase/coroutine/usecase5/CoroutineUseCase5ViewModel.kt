@@ -43,7 +43,8 @@ class CoroutineUseCase5ViewModel(val api: MockApiService = mockApi()) : BaseView
         repeat(numberOfRetries) {
             try {
                 return block()
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                uiState.value = UiState.Error(e.message.toString())
             }
             delay(currentDelay)
             currentDelay = (currentDelay * factor).toLong().coerceAtMost(maxDelayMillis)

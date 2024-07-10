@@ -1,13 +1,13 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase5
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import coil.load
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
+import com.example.usecase_coroutine_and_test.utils.gone
+import com.example.usecase_coroutine_and_test.utils.visible
 
 /**
  * Perform retrying network requests
@@ -32,10 +32,10 @@ class CoroutineUseCase5Activity : AppCompatActivity() {
         // observe
         viewModel.uiState().observe(this) { uiState ->
             when(uiState) {
-                is UiState.Loading -> binding.progressBar.isVisible = true
-                is UiState.Success -> binding.progressBar.isVisible = false
+                is UiState.Loading -> binding.progressBar.visible()
+                is UiState.Success -> binding.progressBar.gone()
                 is UiState.Error -> {
-                    binding.progressBar.isVisible = false
+                    binding.progressBar.gone()
                     binding.tvName.text = uiState.errorMsg
                 }
             }

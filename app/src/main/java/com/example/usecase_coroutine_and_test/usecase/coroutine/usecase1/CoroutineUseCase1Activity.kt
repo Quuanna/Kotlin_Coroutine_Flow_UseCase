@@ -3,9 +3,10 @@ package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase1
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
+import com.example.usecase_coroutine_and_test.utils.gone
+import com.example.usecase_coroutine_and_test.utils.visible
 
 /**
  * single request network
@@ -27,8 +28,8 @@ class CoroutineUseCase1Activity : AppCompatActivity() {
     private fun setupObserve() {
         case1ViewModel.uiState().observe(this@CoroutineUseCase1Activity) { uiState ->
             when (uiState) {
-                is UiState.Loading -> binding.progressBar.isVisible = true
-                is UiState.Success, is UiState.Error -> binding.progressBar.isVisible = false
+                is UiState.Loading -> binding.progressBar.visible()
+                is UiState.Success, is UiState.Error -> binding.progressBar.gone()
             }
         }
 

@@ -1,13 +1,15 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase3
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.usecase_coroutine_and_test.R
 import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseTextBinding
+import com.example.usecase_coroutine_and_test.utils.gone
+import com.example.usecase_coroutine_and_test.utils.toast
+import com.example.usecase_coroutine_and_test.utils.visible
 
 /**
  * Perform network requests concurrently compare Sequentially run time
@@ -58,16 +60,16 @@ class CoroutineUseCase3Activity : AppCompatActivity() {
         }
 
 
-        viewModel.uiState().observe(this@CoroutineUseCase3Activity) { state ->
-            when (state) {
+        viewModel.uiState().observe(this@CoroutineUseCase3Activity) { uiState ->
+            when (uiState) {
                 is UiState.Loading -> {
                     operationStartTime = System.currentTimeMillis()
-                    binding.progressBar.isVisible = true
+                    binding.progressBar.visible()
                 }
-                is UiState.Success -> binding.progressBar.isVisible = false
+                is UiState.Success -> binding.progressBar.gone()
                 is UiState.Error -> {
                     binding.progressBar.isVisible = false
-                    Toast.makeText(this, state.errorMsg, Toast.LENGTH_SHORT).show()
+                    toast(uiState.errorMsg)
                 }
             }
         }
