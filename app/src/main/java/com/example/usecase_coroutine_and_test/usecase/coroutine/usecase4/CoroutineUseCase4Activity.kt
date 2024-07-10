@@ -33,7 +33,7 @@ class CoroutineUseCase4Activity : AppCompatActivity() {
                 is UiState.Success -> binding.progressBar.isVisible = false
                 is UiState.Error -> {
                     binding.progressBar.isVisible = false
-                    Toast.makeText(this, uiState.errorMsg, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, uiState.errorMsg, Toast.LENGTH_SHORT).show()
                 }
             }
         }

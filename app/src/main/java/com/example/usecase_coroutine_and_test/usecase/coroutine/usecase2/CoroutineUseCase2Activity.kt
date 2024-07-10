@@ -1,6 +1,7 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase2
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -9,7 +10,7 @@ import com.example.usecase_coroutine_and_test.constant.UiState
 import com.example.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 
 /**
- * Perform two **sequential** network requests
+ * Perform two sequential network requests
  */
 class CoroutineUseCase2Activity : AppCompatActivity() {
     private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
@@ -33,7 +34,11 @@ class CoroutineUseCase2Activity : AppCompatActivity() {
         case1ViewModel.uiState().observe(this@CoroutineUseCase2Activity) { uiState ->
             when (uiState) {
                 is UiState.Loading -> binding.progressBar.isVisible = true
-                is UiState.Success, is UiState.Error -> binding.progressBar.isVisible = false
+                is UiState.Success -> binding.progressBar.isVisible = false
+                is UiState.Error -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(this, uiState.errorMsg, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
