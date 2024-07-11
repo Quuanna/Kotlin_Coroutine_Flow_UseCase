@@ -1,4 +1,4 @@
-package com.anna.usecase_coroutine_and_test.core.model.response
+package com.anna.usecase_coroutine_and_test.data.network.models
 
 
 

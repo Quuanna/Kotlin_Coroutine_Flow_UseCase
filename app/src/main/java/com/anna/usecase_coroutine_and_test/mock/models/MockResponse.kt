@@ -1,4 +1,4 @@
-package com.anna.usecase_coroutine_and_test.mock
+package com.anna.usecase_coroutine_and_test.mock.models
 
 data class MockResponse(
     val path: String,

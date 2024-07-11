@@ -1,9 +1,9 @@
-package com.example.usecase_coroutine_and_test.useCase5
+package com.anna.usecase_coroutine_and_test.useCase5
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.usecase_coroutine_and_test.ReplaceMainDispatcherRule
+import com.anna.usecase_coroutine_and_test.ReplaceMainDispatcherRule
 import com.anna.usecase_coroutine_and_test.constant.UiState
-import com.example.usecase_coroutine_and_test.usecase.coroutine.usecase5.CoroutineUseCase5ViewModel
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase5.CoroutineUseCase5ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.currentTime

@@ -1,5 +1,6 @@
-package com.anna.usecase_coroutine_and_test.mock
+package com.anna.usecase_coroutine_and_test.mock.api
 
+import com.anna.usecase_coroutine_and_test.mock.models.MockResponse
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.Protocol

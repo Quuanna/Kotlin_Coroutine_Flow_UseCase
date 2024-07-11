@@ -1,7 +1,7 @@
 package com.anna.usecase_coroutine_and_test.core.api
 
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonListResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonInfoResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

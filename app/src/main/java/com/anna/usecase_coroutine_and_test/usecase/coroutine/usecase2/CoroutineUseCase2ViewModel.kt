@@ -7,9 +7,9 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.anna.usecase_coroutine_and_test.constant.UiState
 import com.anna.usecase_coroutine_and_test.core.api.PokemonCline
-import com.anna.usecase_coroutine_and_test.data.PokemonInfo
-import com.anna.usecase_coroutine_and_test.repo.PokemonRepository
-import com.anna.usecase_coroutine_and_test.repo.PokemonRepositoryImpl
+import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
+import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepository
+import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepositoryImpl
 import com.anna.usecase_coroutine_and_test.usecase.BaseViewModel
 import kotlinx.coroutines.launch
 

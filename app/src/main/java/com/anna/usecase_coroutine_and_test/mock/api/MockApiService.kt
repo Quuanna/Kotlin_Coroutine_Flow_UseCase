@@ -1,6 +1,6 @@
-package com.anna.usecase_coroutine_and_test.mock
+package com.anna.usecase_coroutine_and_test.mock.api
 
-import com.anna.usecase_coroutine_and_test.data.PokemonInfo
+import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

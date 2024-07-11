@@ -1,8 +1,8 @@
-package com.anna.usecase_coroutine_and_test.repo
+package com.anna.usecase_coroutine_and_test.data.repo
 
 import com.anna.usecase_coroutine_and_test.core.api.PokemonService
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonListResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonInfoResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

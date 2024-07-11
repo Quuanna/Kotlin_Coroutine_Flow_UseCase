@@ -1,4 +1,4 @@
-package com.example.usecase_coroutine_and_test
+package com.anna.usecase_coroutine_and_test
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

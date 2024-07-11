@@ -1,8 +1,8 @@
-package com.example.usecase_coroutine_and_test.useCase4
+package com.anna.usecase_coroutine_and_test.useCase4
 
 import com.anna.usecase_coroutine_and_test.core.api.PokemonService
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonListResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonInfoResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonListResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 

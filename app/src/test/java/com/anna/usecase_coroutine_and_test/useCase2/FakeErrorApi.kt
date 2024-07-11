@@ -1,8 +1,8 @@
-package com.example.usecase_coroutine_and_test.useCase2
+package com.anna.usecase_coroutine_and_test.useCase2
 
 import com.anna.usecase_coroutine_and_test.core.api.PokemonService
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonListResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonInfoResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonListResponse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import retrofit2.HttpException

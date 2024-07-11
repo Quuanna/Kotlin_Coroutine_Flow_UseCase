@@ -3,10 +3,10 @@ package com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase5
 
 import androidx.lifecycle.viewModelScope
 import com.anna.usecase_coroutine_and_test.constant.UiState
-import com.anna.usecase_coroutine_and_test.data.PokemonInfo
-import com.anna.usecase_coroutine_and_test.mock.MockApiService
-import com.anna.usecase_coroutine_and_test.mock.MockNetworkInterceptor
-import com.anna.usecase_coroutine_and_test.mock.createMockApi
+import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
+import com.anna.usecase_coroutine_and_test.mock.api.MockApiService
+import com.anna.usecase_coroutine_and_test.mock.api.MockNetworkInterceptor
+import com.anna.usecase_coroutine_and_test.mock.api.createMockApi
 import com.anna.usecase_coroutine_and_test.usecase.BaseViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.delay

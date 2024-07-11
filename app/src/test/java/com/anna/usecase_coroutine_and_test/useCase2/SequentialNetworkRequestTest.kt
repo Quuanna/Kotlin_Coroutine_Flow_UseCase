@@ -1,8 +1,8 @@
-package com.example.usecase_coroutine_and_test.useCase2
+package com.anna.usecase_coroutine_and_test.useCase2
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.usecase_coroutine_and_test.FakeRepositoryImpl
-import com.example.usecase_coroutine_and_test.ReplaceMainDispatcherRule
+import com.anna.usecase_coroutine_and_test.FakeRepositoryImpl
+import com.anna.usecase_coroutine_and_test.ReplaceMainDispatcherRule
 import com.anna.usecase_coroutine_and_test.constant.UiState
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase2.CoroutineUseCase2ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi

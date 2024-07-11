@@ -1,9 +1,9 @@
-package com.example.usecase_coroutine_and_test
+package com.anna.usecase_coroutine_and_test
 
 import com.anna.usecase_coroutine_and_test.core.api.PokemonService
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonInfoResponse
-import com.anna.usecase_coroutine_and_test.core.model.response.PokemonListResponse
-import com.anna.usecase_coroutine_and_test.repo.PokemonRepository
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonInfoResponse
+import com.anna.usecase_coroutine_and_test.data.network.models.PokemonListResponse
+import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepository
 
 class FakeRepositoryImpl(val fakeApi: PokemonService) : PokemonRepository {
     private val PAGING_SIZE = 20
