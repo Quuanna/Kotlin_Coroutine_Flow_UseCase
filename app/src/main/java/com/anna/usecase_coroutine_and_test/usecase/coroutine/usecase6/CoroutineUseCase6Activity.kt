@@ -12,7 +12,7 @@ import com.anna.usecase_coroutine_and_test.utils.visible
 
 
 /**
- * Perform network requests timeout or retry
+ * Perform network requests  retry With Timeout
  */
 class CoroutineUseCase6Activity : AppCompatActivity() {
 

@@ -1,6 +1,8 @@
 package com.anna.usecase_coroutine_and_test.constant
 
 import androidx.appcompat.app.AppCompatActivity
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase10.CoroutineUseCase10Activity
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase9.CoroutineUseCase9Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase1.CoroutineUseCase1Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase2.CoroutineUseCase2Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase3.CoroutineUseCase3Activity
@@ -20,11 +22,14 @@ enum class CoroutineUseCaseType(val descriptor: String, val targetActivity: Clas
     USE_CASE_1("1. Perform single network request", CoroutineUseCase1Activity::class.java),
     USE_CASE_2("2. Perform two sequential network requests", CoroutineUseCase2Activity::class.java),
     USE_CASE_3("3. Perform network requests concurrently compare Sequentially run time", CoroutineUseCase3Activity::class.java),
-    USE_CASE_4("4. Perform network requests timeout Use suspending function `withTimeout()`", CoroutineUseCase4Activity::class.java),
+    USE_CASE_4("4. Perform network requests timeout Use suspending function `withTimeout()`、`withTimeoutOrNull()`", CoroutineUseCase4Activity::class.java),
     USE_CASE_5("5. Perform retry network requests ", CoroutineUseCase5Activity::class.java),
-    USE_CASE_6("6. Perform network requests timeout or retry", CoroutineUseCase6Activity::class.java),
-    USE_CASE_7("7. Continue Coroutine execution when the user leaves the screen", CoroutineUseCase7Activity::class.java),
-    USE_CASE_8("8. Using WorkManager with Coroutines", CoroutineUseCase8Activity::class.java),
+    USE_CASE_6("6. Perform network requests retry With Timeout", CoroutineUseCase6Activity::class.java),
+    USE_CASE_7("7. Using Room and Coroutines Perform offline-first", CoroutineUseCase7Activity::class.java),
+    USE_CASE_8("8. Coroutines Exception Handling", CoroutineUseCase8Activity::class.java),
+    USE_CASE_9("9. Continue Coroutine execution when the user leaves the screen", CoroutineUseCase9Activity::class.java),
+    USE_CASE_10("10. Using WorkManager with Coroutines", CoroutineUseCase10Activity::class.java);
+
 }
 
 enum class FlowUseCaseType(val descriptor: String, val targetActivity: Class<out AppCompatActivity>) {
