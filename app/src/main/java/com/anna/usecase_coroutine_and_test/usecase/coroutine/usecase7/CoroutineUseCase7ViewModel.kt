@@ -103,7 +103,7 @@ class CoroutineUseCase7ViewModel(
     }
 }
 
-enum class DataSource(val dataSourceName: String) {
-    DATABASE("Database"),
-    NETWORK("Network")
+enum class DataSource {
+    DATABASE,
+    NETWORK
 }

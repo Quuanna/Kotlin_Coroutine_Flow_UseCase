@@ -3,10 +3,8 @@ package com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase7
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import coil.load
 import com.anna.usecase_coroutine_and_test.R
-import com.anna.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
 import com.anna.usecase_coroutine_and_test.databinding.ActivityCoroutineWithRoomUseCaseBinding
 import com.anna.usecase_coroutine_and_test.utils.gone
 import com.anna.usecase_coroutine_and_test.utils.setDrawable
