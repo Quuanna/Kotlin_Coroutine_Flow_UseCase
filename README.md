@@ -5,8 +5,8 @@
 3. Perform network requests two **sequential** compare two **concurrently** run time
 4. Perform network requests timeout Use suspending function `withTimeout()`、`withTimeoutOrNull()`
 5. Perform retry network requests 
-6. Perform network requests timeout or retry
-7. Room and Coroutines Perform "offline-first"
+6. Perform network requests retry With Timeout
+7. Using Room and Coroutines Perform "offline-first"
 8. Coroutines Exception Handling
 9. Continue Coroutine execution when the user leaves the screen
 10. Using WorkManager with Coroutines
