@@ -1,5 +1,4 @@
-package com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase7
-
+package com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase10
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -14,16 +13,15 @@ import com.anna.usecase_coroutine_and_test.data.local.PokemonInfoDataBase
 import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
 import com.anna.usecase_coroutine_and_test.data.repo.dataSource.PokemonLocalRemoteDataSourceImpl
 import com.anna.usecase_coroutine_and_test.data.repo.dataSource.PokemonRemoteDataSourceImpl
+import com.anna.usecase_coroutine_and_test.data.repo.offlineFirst.OfflineFirstPokemonAsyncRepositoryImpl
 import com.anna.usecase_coroutine_and_test.data.repo.offlineFirst.OfflineFirstPokemonRepository
-import com.anna.usecase_coroutine_and_test.data.repo.offlineFirst.OfflineFirstPokemonRepositoryImpl
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase7.UiState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
-class CoroutineUseCase7ViewModel(
-    val repository: OfflineFirstPokemonRepository
-) : ViewModel() {
+
+class CoroutineUseCase10ViewModel(private val repository: OfflineFirstPokemonRepository) : ViewModel() {
 
     val uiState: LiveData<UiState> get() = _uiState
     private val _uiState: MutableLiveData<UiState> = MutableLiveData()
@@ -31,21 +29,18 @@ class CoroutineUseCase7ViewModel(
     val pokemonInfo: LiveData<PokemonInfo> get() = _pokemonInfo
     private val _pokemonInfo: MutableLiveData<PokemonInfo> = MutableLiveData()
 
+
     companion object {
         fun factory(context: Context) = viewModelFactory {
             initializer {
-                CoroutineUseCase7ViewModel(
-                    repository = OfflineFirstPokemonRepositoryImpl(
+                CoroutineUseCase10ViewModel(
+                    OfflineFirstPokemonAsyncRepositoryImpl(
+                        scope = CoroutineScope(Dispatchers.IO),
+                        remoteDataSource = PokemonRemoteDataSourceImpl(apiService = PokemonCline.apiService),
                         localDataSource = PokemonLocalRemoteDataSourceImpl(
-                            dataBase = PokemonInfoDataBase.getInstance(
-                                context.applicationContext
-                            ).pokemonInfoDao(),
-                            ioDispatcher = Dispatchers.IO
+                            dataBase = PokemonInfoDataBase.getInstance(context.applicationContext)
+                                .pokemonInfoDao()
                         ),
-                        remoteDataSource = PokemonRemoteDataSourceImpl(
-                            apiService = PokemonCline.apiService,
-                            ioDispatcher = Dispatchers.IO
-                        )
                     )
                 )
             }
@@ -105,4 +100,5 @@ class CoroutineUseCase7ViewModel(
             } ?: callback.invoke(null)
         }
     }
+
 }

@@ -27,8 +27,9 @@ enum class CoroutineUseCaseType(val descriptor: String, val targetActivity: Clas
     USE_CASE_6("6. Perform network requests retry With Timeout", CoroutineUseCase6Activity::class.java),
     USE_CASE_7("7. Using Room and Coroutines Perform offline-first", CoroutineUseCase7Activity::class.java),
     USE_CASE_8("8. Coroutines Exception Handling", CoroutineUseCase8Activity::class.java),
-    USE_CASE_9("9. Continue Coroutine execution when the user leaves the screen", CoroutineUseCase9Activity::class.java),
-    USE_CASE_10("10. Using WorkManager with Coroutines", CoroutineUseCase10Activity::class.java);
+    USE_CASE_9("9. Dispatcher with cooperative cancellation", CoroutineUseCase9Activity::class.java),
+    USE_CASE_10("10. Using Room and Coroutines Perform offline-first，Continue Coroutine execution when the user leaves the screen ", CoroutineUseCase10Activity::class.java),
+//    USE_CASE_11("11. Using WorkManager with Coroutines", CoroutineUseCase11Activity::class.java);
 
 }
 
