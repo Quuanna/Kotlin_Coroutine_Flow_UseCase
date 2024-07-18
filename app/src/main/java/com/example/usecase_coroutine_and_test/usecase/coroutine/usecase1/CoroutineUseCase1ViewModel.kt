@@ -33,7 +33,7 @@ class CoroutineUseCase1ViewModel(private val repository: PokemonRepository) :
                     try {
                         pokemonInfo.value = PokemonInfo(
                             name = getOrThrow().results.first().name,
-                            imageUrl = ""
+                            imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
                         )
                     } catch (e: Exception) {
                         uiState.value = UiState.Error(e.message.toString())

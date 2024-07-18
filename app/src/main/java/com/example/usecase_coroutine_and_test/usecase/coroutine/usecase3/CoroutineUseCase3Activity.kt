@@ -1,6 +1,7 @@
 package com.example.usecase_coroutine_and_test.usecase.coroutine.usecase3
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -63,7 +64,11 @@ class CoroutineUseCase3Activity : AppCompatActivity() {
                     operationStartTime = System.currentTimeMillis()
                     binding.progressBar.isVisible = true
                 }
-                is UiState.Error, UiState.Success -> binding.progressBar.isVisible = false
+                is UiState.Success -> binding.progressBar.isVisible = false
+                is UiState.Error -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(this, state.errorMsg, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
