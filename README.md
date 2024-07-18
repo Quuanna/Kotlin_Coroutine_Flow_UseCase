@@ -2,8 +2,8 @@
 # Coroutine Use Case
 1. Perform single network request
 2. Perform two **sequential** network requests
-3. Perform network requests **concurrently** compare **Sequentially** run time
-4. Perform network requests timeout Use suspending function `withTimeout()`
+3. Perform network requests two **sequential** compare two **concurrently** run time
+4. Perform network requests timeout Use suspending function `withTimeout()`、`withTimeoutOrNull()`
 5. Perform retry network requests 
 6. Perform network requests timeout or retry
 7. Room and Coroutines Perform "offline-first"

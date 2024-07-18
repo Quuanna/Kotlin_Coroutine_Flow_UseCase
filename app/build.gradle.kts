@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.usecase_coroutine_and_test"
+    namespace = "com.anna.usecase_coroutine_and_test"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.usecase_coroutine_and_test"
+        applicationId = "com.anna.usecase_coroutine_and_test"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
