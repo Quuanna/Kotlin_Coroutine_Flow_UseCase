@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase10.CoroutineUseCase10Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase9.CoroutineUseCase9Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase1.CoroutineUseCase1Activity
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase11.CoroutineUseCase11Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase2.CoroutineUseCase2Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase3.CoroutineUseCase3Activity
 import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase4.CoroutineUseCase4Activity
@@ -29,7 +30,7 @@ enum class CoroutineUseCaseType(val descriptor: String, val targetActivity: Clas
     USE_CASE_8("8. Coroutines Exception Handling", CoroutineUseCase8Activity::class.java),
     USE_CASE_9("9. Dispatcher with cooperative cancellation", CoroutineUseCase9Activity::class.java),
     USE_CASE_10("10. Using Room and Coroutines Perform offline-first，Continue Coroutine execution when the user leaves the screen ", CoroutineUseCase10Activity::class.java),
-//    USE_CASE_11("11. Using WorkManager with Coroutines", CoroutineUseCase11Activity::class.java);
+    USE_CASE_11("11. Using WorkManager with Coroutines", CoroutineUseCase11Activity::class.java);
 
 }
 
