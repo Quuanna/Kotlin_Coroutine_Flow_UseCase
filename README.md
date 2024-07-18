@@ -47,8 +47,6 @@
 - Retrofit mock: tests more readable & controllable, use Retrofit's mock web server just like how it
   is
   used，[mentioned by @JakeWharton](https://github.com/square/retrofit/issues/1413#issuecomment-168905741)
-- Okhttp3 mockserver: MockWebServer provides fake json, Mock fake Http Response, or request,
-  response, header-related verification
 - [coroutines test](https://developer.android.com/kotlin/coroutines/test#additional-resources)
 
 # Learning source
