@@ -8,8 +8,9 @@
 6. Perform network requests retry With Timeout
 7. Using Room and Coroutines Perform "offline-first"
 8. Coroutines Exception Handling
-9. Continue Coroutine execution when the user leaves the screen
-10. Using WorkManager with Coroutines
+9. calculation is performed on a background thread using the default Dispatcher with cooperative cancellation use `isActive()`, `ensureActive()` or `yield()`
+10. Continue Coroutine execution when the user leaves the screen
+11. Using WorkManager with Coroutines
 
 # Flow Use Case
 

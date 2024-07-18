@@ -12,12 +12,6 @@
         android:theme="@style/Theme.UseCase_Coroutine_And_Test"
         tools:targetApi="31">
         <activity
-            android:name=".usecase.coroutine.usecase10.CoroutineUseCase10Activity"
-            android:exported="false" />
-        <activity
-            android:name=".usecase.coroutine.usecase9.CoroutineUseCase9Activity"
-            android:exported="false" />
-        <activity
             android:name=".ui.UseCastCategoryActivity"
             android:exported="true">
             <intent-filter>
@@ -37,6 +31,12 @@
             android:exported="false" />
         <activity
             android:name=".usecase.flow.usecase1.FlowUseCase1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".usecase.coroutine.usecase10.CoroutineUseCase10Activity"
+            android:exported="false" />
+        <activity
+            android:name=".usecase.coroutine.usecase9.CoroutineUseCase9Activity"
             android:exported="false" />
         <activity
             android:name=".usecase.coroutine.usecase8.CoroutineUseCase8Activity"

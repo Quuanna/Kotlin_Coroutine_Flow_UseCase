@@ -4,4 +4,6 @@
     <string name="flow_use_case">Flow Use Case</string>
     <string name="duration">Operation took %d ms</string>
     <string name="timeout">TimeOut in ms: </string>
+    <string name="duration_calculation">Calculation took %d ms</string>
+    <string name="duration_stringconversion">Converting BigInteger to String took %d ms</string>
 </resources>
