@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.anna.usecase_coroutine_and_test.constant.UiState
-import com.anna.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
+import com.anna.usecase_coroutine_and_test.databinding.ActivityUseCaseBaseBinding
 import com.anna.usecase_coroutine_and_test.utils.gone
 import com.anna.usecase_coroutine_and_test.utils.visible
 
@@ -21,7 +21,7 @@ import com.anna.usecase_coroutine_and_test.utils.visible
  * https://medium.com/@API4AI/best-practice-implementing-retry-logic-in-http-api-clients-0b5469c08ced
  */
 class CoroutineUseCase5Activity : AppCompatActivity() {
-    private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityUseCaseBaseBinding.inflate(layoutInflater) }
     private val viewModel: CoroutineUseCase5ViewModel by viewModels()
 
 
@@ -36,13 +36,13 @@ class CoroutineUseCase5Activity : AppCompatActivity() {
                 is UiState.Success -> binding.progressBar.gone()
                 is UiState.Error -> {
                     binding.progressBar.gone()
-                    binding.tvName.text = uiState.errorMsg
+                    binding.tvText.text = uiState.errorMsg
                 }
             }
         }
 
         viewModel.pokemonInfo().observe(this) { info ->
-            binding.tvName.text = info.name
+            binding.tvText.text = info.name
             binding.imageView.load(info.imageUrl)
         }
     }

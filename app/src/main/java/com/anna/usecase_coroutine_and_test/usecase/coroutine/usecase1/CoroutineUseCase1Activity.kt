@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.anna.usecase_coroutine_and_test.constant.UiState
-import com.anna.usecase_coroutine_and_test.databinding.ActivityCoroutineUseCaseBinding
-import com.anna.usecase_coroutine_and_test.usecase.coroutine.usecase1.CoroutineUseCase1ViewModel
+import com.anna.usecase_coroutine_and_test.databinding.ActivityUseCaseBaseBinding
 import com.anna.usecase_coroutine_and_test.utils.gone
 import com.anna.usecase_coroutine_and_test.utils.visible
 
@@ -15,7 +14,7 @@ import com.anna.usecase_coroutine_and_test.utils.visible
 
 class CoroutineUseCase1Activity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityCoroutineUseCaseBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityUseCaseBaseBinding.inflate(layoutInflater) }
     private val case1ViewModel: CoroutineUseCase1ViewModel by viewModels { CoroutineUseCase1ViewModel.Factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,7 @@ class CoroutineUseCase1Activity : AppCompatActivity() {
         }
 
         case1ViewModel.pokemonInfo().observe(this@CoroutineUseCase1Activity) { info ->
-            binding.tvName.text = info.name
+            binding.tvText.text = info.name
         }
     }
 

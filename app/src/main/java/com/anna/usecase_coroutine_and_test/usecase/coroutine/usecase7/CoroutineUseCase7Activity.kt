@@ -43,7 +43,7 @@ class CoroutineUseCase7Activity : AppCompatActivity() {
         }
 
         viewModel.pokemonInfo.observe(this) { info ->
-            binding.tvName.text = info.name
+            binding.tvText.text = info.name
             binding.imageView.load(info.imageUrl)
         }
     }

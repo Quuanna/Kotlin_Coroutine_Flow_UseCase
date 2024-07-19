@@ -40,7 +40,7 @@ class CoroutineUseCase4Activity : AppCompatActivity() {
         }
 
         viewMode.pokemonInfo().observe(this) { info ->
-            binding.tvName.text = info.name
+            binding.tvText.text = info.name
             binding.imageView.load(info.imageUrl)
         }
 

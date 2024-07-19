@@ -38,7 +38,7 @@ class CoroutineUseCase6Activity : AppCompatActivity() {
         }
 
         viewModel.pokemonInfoList.observe(this) { infoList ->
-            binding.tvName.text = infoList.first().name
+            binding.tvText.text = infoList.first().name
             binding.imageView.load(infoList.first().imageUrl)
             binding.tvName2.text = infoList.last().name
             binding.imageView2.load(infoList.last().imageUrl)
