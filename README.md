@@ -50,6 +50,4 @@
   used，[mentioned by @JakeWharton](https://github.com/square/retrofit/issues/1413#issuecomment-168905741)
 - [coroutines test](https://developer.android.com/kotlin/coroutines/test#additional-resources)
 
-# Learning source
 
-[Kotlin Coroutines and Flow - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutines-and-Flow-UseCases-on-Android?tab=readme-ov-file)
