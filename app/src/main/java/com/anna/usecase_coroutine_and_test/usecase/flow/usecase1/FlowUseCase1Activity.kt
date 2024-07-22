@@ -12,6 +12,7 @@ import com.anna.usecase_coroutine_and_test.utils.visible
 
 /**
  * Flow Basics
+ * use asLiveData
  */
 class FlowUseCase1Activity : AppCompatActivity() {
 
@@ -28,7 +29,7 @@ class FlowUseCase1Activity : AppCompatActivity() {
     }
 
     private fun setupObserve() {
-        viewModel.uiState.observe(this) { uiState ->
+        viewModel.getPokemon.observe(this) { uiState ->
             render(uiState)
         }
     }

@@ -26,13 +26,13 @@ class FlowUseCase1ViewModel(private val repository: MockRepository) : ViewModel(
         }
     }
 
-    val uiState: LiveData<UiSateForFlow> =  repository.fetchPokemon()
+    val getPokemon: LiveData<UiSateForFlow> = repository.fetchPokemon()
         .map { pokemon ->
-            UiSateForFlow.Success(pokemon)
+            UiSateForFlow.Success(pokemon) as UiSateForFlow
         }.onStart {
-            UiSateForFlow.Loading
+            emit(UiSateForFlow.Loading)
         }.catch {
-            UiSateForFlow.Error("Network request failed!")
+            emit(UiSateForFlow.Error("Network request failed!"))
         }.asLiveData()
 
 }

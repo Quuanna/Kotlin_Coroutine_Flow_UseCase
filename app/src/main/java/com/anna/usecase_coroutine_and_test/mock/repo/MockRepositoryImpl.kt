@@ -10,7 +10,7 @@ class MockRepositoryImpl(
 ) : MockRepository {
 
     override fun fetchPokemon(): Flow<PokemonInfo> = flow {
-        val current = mockApi.getPokemonInfoCode(2)
+        val current = mockApi.getPokemonInfoCode(2) // 1 success、2 Fail
         emit(current)
         // 模擬時間
         delay(5_000)
