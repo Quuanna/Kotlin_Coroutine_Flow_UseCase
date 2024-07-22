@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.anna.usecase_coroutine_and_test.constant.CoroutineUseCaseType
 import com.anna.usecase_coroutine_and_test.constant.FlowUseCaseType
 import com.anna.usecase_coroutine_and_test.constant.UseCaseCategory
-import com.anna.usecase_coroutine_and_test.databinding.ItemGridViewBinding
+import com.anna.usecase_coroutine_and_test.databinding.ItemListViewBinding
 
 
 class UseCastCategoryAdapter(
@@ -19,7 +19,7 @@ class UseCastCategoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemGridViewBinding.inflate(
+            ItemListViewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -29,7 +29,7 @@ class UseCastCategoryAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) = holder.bind()
 
-    inner class MyViewHolder(private val binding: ItemGridViewBinding) :
+    inner class MyViewHolder(private val binding: ItemListViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val coroutineUseCaseType = useCaseCategory.useCases[adapterPosition] as? CoroutineUseCaseType

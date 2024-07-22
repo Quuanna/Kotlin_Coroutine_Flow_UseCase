@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
 import com.anna.usecase_coroutine_and_test.databinding.ActivityUseCaseBaseBinding
-import com.anna.usecase_coroutine_and_test.usecase.flow.UiSateForFlow
 import com.anna.usecase_coroutine_and_test.utils.gone
 import com.anna.usecase_coroutine_and_test.utils.visible
 

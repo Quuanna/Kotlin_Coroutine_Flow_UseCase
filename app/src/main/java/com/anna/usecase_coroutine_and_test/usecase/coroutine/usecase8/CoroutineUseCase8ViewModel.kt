@@ -6,7 +6,7 @@ import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
 import com.anna.usecase_coroutine_and_test.mock.api.MockApiService
 import com.anna.usecase_coroutine_and_test.mock.api.MockNetworkInterceptor
 import com.anna.usecase_coroutine_and_test.mock.api.createMockApi
-import com.anna.usecase_coroutine_and_test.usecase.BaseViewModel
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.BaseViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

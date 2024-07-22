@@ -10,7 +10,7 @@ import com.anna.usecase_coroutine_and_test.core.api.PokemonCline
 import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
 import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepository
 import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepositoryImpl
-import com.anna.usecase_coroutine_and_test.usecase.BaseViewModel
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.BaseViewModel
 import kotlinx.coroutines.launch
 
 class CoroutineUseCase2ViewModel(val repository: PokemonRepository) : BaseViewModel<PokemonInfo>() {

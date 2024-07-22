@@ -1,4 +1,4 @@
-package com.anna.usecase_coroutine_and_test.usecase
+package com.anna.usecase_coroutine_and_test.usecase.coroutine
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

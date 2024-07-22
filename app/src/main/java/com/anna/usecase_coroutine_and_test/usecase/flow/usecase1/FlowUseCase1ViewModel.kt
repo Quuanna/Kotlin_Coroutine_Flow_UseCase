@@ -10,7 +10,6 @@ import com.anna.usecase_coroutine_and_test.mock.api.MockNetworkInterceptor
 import com.anna.usecase_coroutine_and_test.mock.api.createMockApi
 import com.anna.usecase_coroutine_and_test.mock.repo.MockRepository
 import com.anna.usecase_coroutine_and_test.mock.repo.MockRepositoryImpl
-import com.anna.usecase_coroutine_and_test.usecase.flow.UiSateForFlow
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map

@@ -12,7 +12,7 @@ import com.anna.usecase_coroutine_and_test.data.network.models.PokemonListRespon
 import com.anna.usecase_coroutine_and_test.data.model.PokemonApiResultOrder
 import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepository
 import com.anna.usecase_coroutine_and_test.data.repo.PokemonRepositoryImpl
-import com.anna.usecase_coroutine_and_test.usecase.BaseViewModel
+import com.anna.usecase_coroutine_and_test.usecase.coroutine.BaseViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch

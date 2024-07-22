@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCoroutine"
             tools:itemCount="2"
-            tools:listitem="@layout/item_grid_view" />
+            tools:listitem="@layout/item_list_view" />
 
         <TextView
             android:id="@+id/tvFlow"
@@ -52,7 +52,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFlow"
             tools:itemCount="2"
-            tools:listitem="@layout/item_grid_view" />
+            tools:listitem="@layout/item_list_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

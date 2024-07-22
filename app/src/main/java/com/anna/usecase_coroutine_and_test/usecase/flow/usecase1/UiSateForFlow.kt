@@ -1,4 +1,4 @@
-package com.anna.usecase_coroutine_and_test.usecase.flow
+package com.anna.usecase_coroutine_and_test.usecase.flow.usecase1
 
 import com.anna.usecase_coroutine_and_test.data.model.PokemonInfo
 
