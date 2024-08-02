@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anna.usecase_coroutine_and_test.databinding.ActivityFlowUseCase2Binding
+import com.anna.usecase_coroutine_and_test.usecase.flow.BaseListAdapter
 import com.anna.usecase_coroutine_and_test.utils.gone
 import com.anna.usecase_coroutine_and_test.utils.toast
 import com.anna.usecase_coroutine_and_test.utils.visible
@@ -20,7 +21,7 @@ class FlowUseCase2Activity : AppCompatActivity() {
 
     private val binding by lazy { ActivityFlowUseCase2Binding.inflate(layoutInflater) }
     private val viewModel: FlowUseCase2ViewModel by viewModels { FlowUseCase2ViewModel.factory }
-    private var myListAdapter: MyListAdapter? = null
+    private var myListAdapter: BaseListAdapter<PokemonList>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class FlowUseCase2Activity : AppCompatActivity() {
     }
 
     private fun initView() = with(binding) {
-        myListAdapter = MyListAdapter(arrayListOf())
+        myListAdapter = BaseListAdapter(arrayListOf())
         recyclerView.layoutManager = LinearLayoutManager(this@FlowUseCase2Activity)
         recyclerView.adapter = myListAdapter
         recyclerView.addItemDecoration(

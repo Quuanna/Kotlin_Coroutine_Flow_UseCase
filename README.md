@@ -15,7 +15,7 @@
 # Flow Use Case
 
 1. Flow Basics
-2. Basic Flow Intermediate Operators
+2. Basic Flow Intermediate Operators、class FlowIntermediateOperators Operators
 3. Flow Exception Handling
 4. Exposing Flows in the ViewModel
 
