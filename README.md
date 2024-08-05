@@ -16,7 +16,7 @@
 
 1. Flow Basics
 2. Basic Flow Intermediate Operators、class FlowIntermediateOperators Operators
-3. Flow Exception Handling
+3. Flow Exception Handling， it use `catch` operator to handle exceptions、`retry` operator retry failed network request
 4. Exposing Flows in the ViewModel
 
 # based
@@ -50,4 +50,7 @@
   used，[mentioned by @JakeWharton](https://github.com/square/retrofit/issues/1413#issuecomment-168905741)
 - [coroutines test](https://developer.android.com/kotlin/coroutines/test#additional-resources)
 
+
+# Learn resource
+[Kotlin Coroutines and Flow - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutines-and-Flow-UseCases-on-Android)
 
