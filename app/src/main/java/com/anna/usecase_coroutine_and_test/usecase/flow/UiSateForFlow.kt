@@ -1,4 +1,4 @@
-package com.anna.usecase_coroutine_and_test.usecase.flow.usecase2
+package com.anna.usecase_coroutine_and_test.usecase.flow
 
 
 sealed class UiSateForFlow {

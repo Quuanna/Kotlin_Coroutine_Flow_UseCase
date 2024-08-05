@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anna.usecase_coroutine_and_test.databinding.ActivityFlowUseCaseListBinding
 import com.anna.usecase_coroutine_and_test.usecase.flow.BaseListAdapter
+import com.anna.usecase_coroutine_and_test.usecase.flow.UiSateForFlow
 import com.anna.usecase_coroutine_and_test.utils.gone
 import com.anna.usecase_coroutine_and_test.utils.toast
 import com.anna.usecase_coroutine_and_test.utils.visible
@@ -21,7 +22,7 @@ class FlowUseCase2Activity : AppCompatActivity() {
 
     private val binding by lazy { ActivityFlowUseCaseListBinding.inflate(layoutInflater) }
     private val viewModel: FlowUseCase2ViewModel by viewModels { FlowUseCase2ViewModel.factory }
-    private var myListAdapter: BaseListAdapter<PokemonList>? = null
+    private var myListAdapter: BaseListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

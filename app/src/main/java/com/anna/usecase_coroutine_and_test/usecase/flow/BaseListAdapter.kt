@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.anna.usecase_coroutine_and_test.databinding.ItemIndexListViewBinding
-import com.anna.usecase_coroutine_and_test.usecase.flow.usecase2.PokemonList
 
-class BaseListAdapter<T>(private var results: ArrayList<T>) :
-    RecyclerView.Adapter<BaseListAdapter<T>.MyViewHolder>() {
+class BaseListAdapter(private var results: ArrayList<PokemonList>) :
+    RecyclerView.Adapter<BaseListAdapter.MyViewHolder>() {
 
-    fun updateList(lists: List<T>) {
+    fun updateList(lists: List<PokemonList>) {
         results.clear()
         results.addAll(lists)
         notifyItemRangeChanged(0, results.size + 1)
@@ -34,13 +33,9 @@ class BaseListAdapter<T>(private var results: ArrayList<T>) :
 
     inner class MyViewHolder(val binding: ItemIndexListViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(result: T) {
-            when(result) {
-                is PokemonList -> {
-                    binding.tvNum.text = (result as? PokemonList)?.id.toString()
-                    binding.tvText.text = (result as? PokemonList)?.name
-                }
-            }
+        fun bind(result: PokemonList) {
+            binding.tvNum.text = (result as? PokemonList)?.id.toString()
+            binding.tvText.text = (result as? PokemonList)?.name
         }
     }
 

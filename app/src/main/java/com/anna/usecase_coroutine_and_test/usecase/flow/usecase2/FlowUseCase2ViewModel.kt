@@ -6,6 +6,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.anna.usecase_coroutine_and_test.core.api.PokemonCline
+import com.anna.usecase_coroutine_and_test.usecase.flow.PokemonList
+import com.anna.usecase_coroutine_and_test.usecase.flow.UiSateForFlow
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
